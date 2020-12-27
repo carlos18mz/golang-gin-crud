@@ -18,4 +18,3 @@
 [GIN-debug] GET    /view/videos              --> crud-gin/controller.VideoController.ShowAll-fm (4 handlers)
 [GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
 [GIN-debug] Listening and serving HTTP on :5000
-::1 - [27 Dec 20 18:12 -05] GET /api/v1 404 0s 
