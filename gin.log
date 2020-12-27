@@ -16,7 +16,6 @@
 [GIN-debug] DELETE /api/videos/:id           --> main.main.func6 (5 handlers)
 [GIN-debug] GET    /api/                     --> main.main.func7 (5 handlers)
 [GIN-debug] GET    /view/videos              --> crud-gin/controller.VideoController.ShowAll-fm (4 handlers)
+[GIN-debug] GET    /swagger/*any             --> github.com/swaggo/gin-swagger.CustomWrapHandler.func1 (4 handlers)
 [GIN-debug] Listening and serving HTTP on :5000
-::1 - [27 Dec 20 17:22 -05] POST /login 200 998.9µs 
-::1 - [27 Dec 20 17:23 -05] POST /api/videos 200 770.0449ms 
-::1 - [27 Dec 20 17:23 -05] GET /api/videos 200 116.613ms 
+::1 - [27 Dec 20 18:12 -05] GET /api/v1 404 0s 
