@@ -1,0 +1,17 @@
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (5 handlers)
+[GIN-debug] HEAD   /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (5 handlers)
+[GIN-debug] Loaded HTML Templates (2): 
+	- 
+	- index.html
+
+[GIN-debug] GET    /api/videos               --> main.main.func1 (5 handlers)
+[GIN-debug] POST   /api/videos               --> main.main.func2 (5 handlers)
+[GIN-debug] GET    /api/                     --> main.main.func3 (5 handlers)
+[GIN-debug] GET    /view/videos              --> crud-gin/controller.VideoController.ShowAll-fm (5 handlers)
+[GIN-debug] Listening and serving HTTP on :8080
+::1 - [27 Dec 20 00:38 -05] POST /api/videos 200 996.8µs 
+::1 - [27 Dec 20 00:38 -05] GET /api/videos 200 0s 
