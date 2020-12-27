@@ -19,12 +19,16 @@ import (
 
 //Golang + gin + mysql Crud
 
-//save repos
+//import repos
 // go get -u {{repo-link}}
 
 //Run project
 //	go guild
 //	.\crud-gin
+
+//Swagger
+// create swagger.sh
+// swag init
 
 //deploy to heroku
 //	heroku create {{project-name}}
@@ -58,7 +62,7 @@ func main() {
 	docs.SwaggerInfo.Description = "A chat project with sockets"
 	docs.SwaggerInfo.Version = "1.0"
 	docs.SwaggerInfo.Host = "golang-gin-be.herokuapp.com"
-	docs.SwaggerInfo.BasePath = "api/v1"
+	docs.SwaggerInfo.BasePath = "/api/v1"
 	docs.SwaggerInfo.Schemes = []string{"https"}
 
 	//With custom middleware
