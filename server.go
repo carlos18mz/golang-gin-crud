@@ -35,6 +35,8 @@ func index(w http.ResponseWriter, req *http.Request) {
 
 func main() {
 
+	//Swagger documentation
+
 	//With custom middleware
 	setupLogOutput()
 
