@@ -22,6 +22,10 @@ func setupLogOutput() {
 	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
 }
 
+func index(w http.ResponseWriter, req *http.Request) {
+	io.WriteString(w, "Listen and Serve")
+}
+
 func main() {
 
 	//With custom middleware
@@ -44,6 +48,10 @@ func main() {
 
 	//load html static pages
 	server.LoadHTMLGlob("templates/*.html")
+
+	server.GET("/", func(ctx *gin.Context) {
+		ctx.JSON(200, "listen and serve")
+	})
 
 	apiRoutes := server.Group("/api")
 	{

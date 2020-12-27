@@ -8,10 +8,10 @@
 	- 
 	- index.html
 
-[GIN-debug] GET    /api/videos               --> main.main.func1 (5 handlers)
-[GIN-debug] POST   /api/videos               --> main.main.func2 (5 handlers)
-[GIN-debug] GET    /api/                     --> main.main.func3 (5 handlers)
+[GIN-debug] GET    /                         --> main.main.func1 (5 handlers)
+[GIN-debug] GET    /api/videos               --> main.main.func2 (5 handlers)
+[GIN-debug] POST   /api/videos               --> main.main.func3 (5 handlers)
+[GIN-debug] GET    /api/                     --> main.main.func4 (5 handlers)
 [GIN-debug] GET    /view/videos              --> crud-gin/controller.VideoController.ShowAll-fm (5 handlers)
-[GIN-debug] Listening and serving HTTP on :8080
-::1 - [27 Dec 20 00:38 -05] POST /api/videos 200 996.8µs 
-::1 - [27 Dec 20 00:38 -05] GET /api/videos 200 0s 
+[GIN-debug] Listening and serving HTTP on :5000
+::1 - [27 Dec 20 00:55 -05] GET / 200 0s 
