@@ -3,7 +3,9 @@ package main
 import (
 	"crud-gin/controller"
 	"crud-gin/middlewares"
+	"crud-gin/repository"
 	"crud-gin/service"
+	"fmt"
 	"io"
 	"net/http"
 	"os"
@@ -13,8 +15,13 @@ import (
 )
 
 var (
-	videoService    service.VideoService       = service.New()
+	videoRepository repository.VideoRepository = repository.NewVideoRepository()
+	videoService    service.VideoService       = service.New(videoRepository)
+	loginService    service.LoginService       = service.NewLoginService()
+	jwtService      service.JWTService         = service.NewJWTService()
+
 	videoController controller.VideoController = controller.New(videoService)
+	loginController controller.LoginController = controller.NewLoginController(loginService, jwtService)
 )
 
 func setupLogOutput() {
@@ -33,7 +40,7 @@ func main() {
 
 	server := gin.New()
 	server.Use(gin.Recovery(), middlewares.Logger(),
-		middlewares.BasicAuth(), gindump.Dump())
+		gindump.Dump())
 
 	//Recovery(): 	get transactions on console
 	//Logger(): 	save logs in file
@@ -49,7 +56,12 @@ func main() {
 	//load html static pages
 	server.LoadHTMLGlob("templates/*.html")
 
-	//Login EndPoint: Authentication + Token.Creation
+	server.GET("/", func(ctx *gin.Context) {
+		fmt.Println("execute /")
+		ctx.JSON(200, "listen and serve")
+	})
+
+	// Login Endpoint: Authentication + Token creation
 	server.POST("/login", func(ctx *gin.Context) {
 		token := loginController.Login(ctx)
 		if token != "" {
@@ -59,10 +71,6 @@ func main() {
 		} else {
 			ctx.JSON(http.StatusUnauthorized, nil)
 		}
-	})
-
-	server.GET("/", func(ctx *gin.Context) {
-		ctx.JSON(200, "listen and serve")
 	})
 
 	apiRoutes := server.Group("/api", middlewares.AuthorizeJWT())
@@ -77,6 +85,24 @@ func main() {
 				ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			} else {
 				ctx.JSON(http.StatusOK, gin.H{"message": " Input valid!!"})
+			}
+		})
+
+		apiRoutes.PUT("/videos/:id", func(ctx *gin.Context) {
+			err := videoController.Update(ctx)
+			if err != nil {
+				ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			} else {
+				ctx.JSON(http.StatusOK, gin.H{"message": "Video Input is Valid!!"})
+			}
+		})
+
+		apiRoutes.DELETE("/videos/:id", func(ctx *gin.Context) {
+			err := videoController.Delete(ctx)
+			if err != nil {
+				ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			} else {
+				ctx.JSON(http.StatusOK, gin.H{"message": "Video Input is Valid!!"})
 			}
 		})
 

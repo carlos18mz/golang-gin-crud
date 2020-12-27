@@ -2,16 +2,21 @@
  - using env:	export GIN_MODE=release
  - using code:	gin.SetMode(gin.ReleaseMode)
 
-[GIN-debug] GET    /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (5 handlers)
-[GIN-debug] HEAD   /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (5 handlers)
+[GIN-debug] GET    /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
+[GIN-debug] HEAD   /css/*filepath            --> github.com/gin-gonic/gin.(*RouterGroup).createStaticHandler.func1 (4 handlers)
 [GIN-debug] Loaded HTML Templates (2): 
 	- 
 	- index.html
 
-[GIN-debug] GET    /                         --> main.main.func1 (5 handlers)
-[GIN-debug] GET    /api/videos               --> main.main.func2 (5 handlers)
-[GIN-debug] POST   /api/videos               --> main.main.func3 (5 handlers)
-[GIN-debug] GET    /api/                     --> main.main.func4 (5 handlers)
-[GIN-debug] GET    /view/videos              --> crud-gin/controller.VideoController.ShowAll-fm (5 handlers)
+[GIN-debug] GET    /                         --> main.main.func1 (4 handlers)
+[GIN-debug] POST   /login                    --> main.main.func2 (4 handlers)
+[GIN-debug] GET    /api/videos               --> main.main.func3 (5 handlers)
+[GIN-debug] POST   /api/videos               --> main.main.func4 (5 handlers)
+[GIN-debug] PUT    /api/videos/:id           --> main.main.func5 (5 handlers)
+[GIN-debug] DELETE /api/videos/:id           --> main.main.func6 (5 handlers)
+[GIN-debug] GET    /api/                     --> main.main.func7 (5 handlers)
+[GIN-debug] GET    /view/videos              --> crud-gin/controller.VideoController.ShowAll-fm (4 handlers)
 [GIN-debug] Listening and serving HTTP on :5000
-::1 - [27 Dec 20 00:55 -05] GET / 200 0s 
+::1 - [27 Dec 20 17:22 -05] POST /login 200 998.9µs 
+::1 - [27 Dec 20 17:23 -05] POST /api/videos 200 770.0449ms 
+::1 - [27 Dec 20 17:23 -05] GET /api/videos 200 116.613ms 
