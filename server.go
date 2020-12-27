@@ -49,11 +49,23 @@ func main() {
 	//load html static pages
 	server.LoadHTMLGlob("templates/*.html")
 
+	//Login EndPoint: Authentication + Token.Creation
+	server.POST("/login", func(ctx *gin.Context) {
+		token := loginController.Login(ctx)
+		if token != "" {
+			ctx.JSON(http.StatusOK, gin.H{
+				"token": token,
+			})
+		} else {
+			ctx.JSON(http.StatusUnauthorized, nil)
+		}
+	})
+
 	server.GET("/", func(ctx *gin.Context) {
 		ctx.JSON(200, "listen and serve")
 	})
 
-	apiRoutes := server.Group("/api")
+	apiRoutes := server.Group("/api", middlewares.AuthorizeJWT())
 	{
 		apiRoutes.GET("/videos", func(ctx *gin.Context) {
 			ctx.JSON(200, videoController.FindAll())
